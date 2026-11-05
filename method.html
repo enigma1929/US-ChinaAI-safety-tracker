@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Method | US-China AI Safety Benchmark Tracker</title>
+<meta name="description" content="Which AI safety and dangerous-capability benchmarks ten Chinese and six US AI labs disclose results on.">
+<style>
+:root{--bg:#fbfaf7;--panel:#ffffff;--ink:#1b1d21;--muted:#5d6470;--line:#e2e0da;--soft:#f1efea;
+--accent:#1f4e79;--dot:#c9c6bf;--warn:#8a5a00;--warnbg:#fff4dc;--shade:31,78,121;
+--cn:#c2410c;--cn2:#e98d55;--us:#2257b5;--us2:#79a0e3;--nt:#c9c6bf;--tr:#e6e3dc;--on-cn:#fff;--on-cn2:#1b1d21;--on-us:#fff;--on-us2:#1b1d21;--on-nt:#1b1d21}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15171a;--panel:#1d2024;--ink:#e8e6e1;
+--muted:#a3a8b0;--line:#33373d;--soft:#24272c;--accent:#8fb8e0;--dot:#4a4e55;--warn:#f0c46c;--warnbg:#3a2f17;--shade:74,128,190;--cn:#d6703c;--cn2:#94492a;--us:#6890df;--us2:#3a5fa6;--nt:#5a5e66;--tr:#33373d;--on-cn:#1b1d21;--on-cn2:#fff;--on-us:#1b1d21;--on-us2:#fff;--on-nt:#fff}}
+:root[data-theme="dark"]{--bg:#15171a;--panel:#1d2024;--ink:#e8e6e1;--muted:#a3a8b0;--line:#33373d;--soft:#24272c;
+--accent:#8fb8e0;--dot:#4a4e55;--warn:#f0c46c;--warnbg:#3a2f17;--shade:74,128,190;--cn:#d6703c;--cn2:#94492a;--us:#6890df;--us2:#3a5fa6;--nt:#5a5e66;--tr:#33373d;--on-cn:#1b1d21;--on-cn2:#fff;--on-us:#1b1d21;--on-us2:#fff;--on-nt:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--accent)}h1,h2,h3,.brand,.serif{font-family:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;line-height:1.2;font-weight:700}
+h1{font-size:2.4rem;margin:2.4rem 0 .8rem;letter-spacing:-.01em}h2{font-size:1.6rem;margin:3rem 0 .6rem}h3{font-size:1.15rem;margin:1.4rem 0 .4rem}
+.narrow{max-width:760px}.hero{margin-bottom:1rem}.sub{color:var(--muted);font-size:.95rem;max-width:760px;margin:.2rem 0 1rem}
+.takeaways{counter-reset:t;list-style:none;padding:0;margin:0;border-top:2px solid var(--ink)}
+.takeaways li{counter-increment:t;position:relative;padding:14px 0 14px 44px;border-bottom:1px solid var(--line)}
+.takeaways li::before{content:counter(t);position:absolute;left:0;top:12px;font:700 1.5rem/1 Charter,Georgia,serif;color:var(--accent)}
+.takeaways p{margin:0 0 .3rem;font-size:1.05rem}.takeaways small{display:block;color:var(--muted);margin-bottom:.3rem}.takeaways a{font-size:.9rem;text-decoration:none}
+.tiles{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.tile{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--ink);padding:14px 16px}
+.tile summary{cursor:pointer;list-style:none;display:flex;flex-direction:column;gap:4px}.tile summary::-webkit-details-marker{display:none}
+.tile .fid{font:700 1.6rem/1 Charter,Georgia,serif;color:var(--accent)}.tile b{font-family:Charter,Georgia,serif;font-size:1.1rem}
+.tile .q{color:var(--muted);font-size:.9rem}.tile .n{font-size:.8rem;color:var(--muted);margin-top:4px}
+.tile ul{padding-left:1rem;font-size:.86rem;margin:.6rem 0 0}.tile li{margin:.3rem 0}.tile li a{text-decoration:none}
+.deeper{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.dcard{display:flex;flex-direction:column;gap:4px;padding:16px;border:1px solid var(--line);border-left:3px solid var(--accent);background:var(--panel);text-decoration:none;color:var(--ink)}
+.dcard b{font-family:Charter,Georgia,serif;font-size:1.15rem}.dcard span{color:var(--muted);font-size:.9rem}
+.exhibit{border-top:1px solid var(--ink);padding-top:10px;margin:2.4rem 0;max-width:960px}
+.ex-n{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.ex-title{font-family:Charter,Georgia,serif;font-size:1.35rem;font-weight:700;margin:.3rem 0 .2rem;line-height:1.25}
+.ex-sub{font-size:.88rem;color:var(--muted);margin-bottom:.8rem}.ex-src{font-size:.75rem;color:var(--muted);margin-top:.6rem}
+.appx{position:relative}.appx summary{cursor:pointer;color:var(--muted);list-style:none}.appx summary::-webkit-details-marker{display:none}
+.appx summary::after{content:" \25BE"}.appx summary.cur,.appx summary:hover{color:var(--ink)}
+.appx-menu{position:absolute;top:1.8rem;left:-10px;z-index:60;background:var(--panel);border:1px solid var(--line);padding:6px 0;min-width:160px;display:flex;flex-direction:column}
+.appx-menu a{padding:5px 14px}nav.sec a[aria-current]{color:var(--ink);font-weight:600}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+header.top{position:sticky;top:0;z-index:50;background:var(--panel);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;gap:14px;align-items:center;min-height:54px;flex-wrap:wrap}
+.brand{font-size:1.05rem;text-decoration:none;color:var(--ink)}
+nav.sec{display:flex;gap:18px;font-size:.92rem;flex-wrap:wrap;align-items:center}nav.sec a{text-decoration:none;color:var(--muted)}
+nav.sec a:hover{color:var(--ink)}.asof{font-size:.8rem;color:var(--muted);margin-left:auto}
+.search{padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--ink);width:min(420px,100%);font:inherit;font-size:.9rem}
+button,.btn{font:inherit;font-size:.85rem;padding:5px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--ink);cursor:pointer}
+button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.draft{display:inline-block;font-size:.72rem;font-weight:600;color:var(--warn);background:var(--warnbg);border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:middle}
+.lede{font-size:1.05rem;max-width:820px}
+.findings{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.finding{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.finding p{margin:0 0 .5rem}.finding small{color:var(--muted);display:block;margin-bottom:.4rem}
+.labs{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(205px,1fr))}
+.labcard{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;cursor:pointer;text-align:left;padding:0;text-decoration:none;color:var(--ink);display:block}
+.labcard .hd{padding:6px 10px;font-weight:700;display:flex;justify-content:space-between}
+.labcard .bd{padding:8px 10px;font-size:.85rem}.labcard .bd div{margin:2px 0}
+.k{color:var(--muted)}
+table{border-collapse:collapse}
+.heat td,.heat th{border:1px solid var(--line);padding:4px 6px;font-size:.82rem;text-align:center}
+.heat th.l{text-align:left;white-space:nowrap}
+.heat td.h{min-width:64px}
+.scroll{overflow:auto;max-width:100%}
+details.lab{border-bottom:1px solid var(--line);padding:6px 0}details.lab summary{cursor:pointer}
+.mlist{columns:3 260px;font-size:.86rem;margin:.4rem 0 .2rem;padding-left:1.1rem}
+.tag{display:inline-block;font-size:.7rem;border:1px solid var(--line);border-radius:10px;padding:0 6px;color:var(--muted);margin-left:4px}
+.tag.latest{border-color:var(--accent);color:var(--accent)}.tag.new{border-color:#2e7d32;color:#2e7d32}
+.tag.thin{border-color:var(--warn);color:var(--warn)}
+.fam{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 16px 12px;margin:14px 0}
+.fam h2{margin-top:1rem}.fam h2 .q,.fam h3 .q{display:block;font-weight:400;color:var(--muted);font-size:.92rem;margin-top:3px}
+.bm{border-top:1px solid var(--soft);padding:6px 0}.bm .nm{font-weight:600}
+.bm .meta{font-size:.78rem;color:var(--muted)}.bm details{font-size:.86rem}.bm details summary{cursor:pointer;color:var(--accent)}
+.star{color:#b8860b}
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.ctrl select{font:inherit;font-size:.85rem;padding:4px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--ink)}
+.ctrl label{font-size:.85rem}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.legend{font-size:.8rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:14px;margin:6px 0}
+.mx{max-height:78vh;overflow:auto;border:1px solid var(--line);background:var(--panel);border-radius:6px}
+.mx table{font-size:.78rem}
+.mx th,.mx td{border-right:1px solid var(--soft);border-bottom:1px solid var(--soft)}
+.mx thead th{position:sticky;background:var(--panel);z-index:3}
+.mx thead tr.band th{top:0;height:24px;font-size:.72rem;font-weight:700;padding:2px 4px;white-space:nowrap}
+.mx thead tr.mod th{top:24px;height:150px;vertical-align:bottom;padding:4px 2px}
+.mx thead th.corner{left:0;z-index:5}
+.mx .vh{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;max-height:142px;overflow:hidden;text-overflow:ellipsis;font-weight:600;display:inline-block}
+.mx tbody th{position:sticky;left:0;background:var(--panel);z-index:2;text-align:left;font-weight:400;min-width:230px;max-width:230px;padding:3px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mx tr.fh th,.mx tr.ch th,.mx tr.th th{position:sticky;left:0;z-index:2;text-align:left;white-space:nowrap}
+.mx tr.fh th{background:var(--ink);color:var(--bg);font-weight:700;padding:5px 6px}
+.mx tr.ch th{background:var(--soft);font-weight:600;padding:3px 6px}
+.mx tr.th th{font-style:italic;color:var(--muted);font-weight:400;padding:2px 6px;background:var(--panel)}
+.mx tr.fh td{background:var(--ink)}.mx tr.ch td{background:var(--soft)}
+.mx td{min-width:46px;max-width:64px;height:26px;text-align:center;padding:0 2px;white-space:nowrap;overflow:hidden}
+.mx td.c{cursor:pointer}.mx td.c:hover{outline:2px solid var(--accent);outline-offset:-2px}
+.mx td.c:hover{background:rgba(var(--shade),var(--s,0))}
+.mx td.e::after{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--dot)}
+.ar{font-size:.7rem;color:var(--muted);margin-left:1px}
+.ic{display:inline-block;width:6px;height:6px;margin-left:2px;vertical-align:middle}
+.ic.ls{background:var(--ink)}.ic.tp{border:1.5px solid var(--ink);transform:rotate(45deg);width:5px;height:5px}
+.mx td.mm{color:var(--muted);font-style:italic}
+.mx td.nw{box-shadow:inset 0 -2px 0 #2e7d32}
+.empty{padding:20px;color:var(--muted)}
+.card{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);background:var(--panel);border-left:1px solid var(--line);
+z-index:100;overflow:auto;padding:16px 18px 30px;box-shadow:-8px 0 24px rgba(0,0,0,.12);display:none}
+.card.open{display:block}.card .x{position:absolute;top:10px;right:12px}
+.card .sc{font-size:1.6rem;font-weight:700;margin:.2rem 0}.card .rg{color:var(--muted);font-size:.9rem}
+.card blockquote{margin:.6rem 0;padding:.4rem .8rem;border-left:3px solid var(--line);color:var(--ink);font-size:.9rem}
+.badge{display:inline-block;font-size:.75rem;border-radius:4px;padding:1px 7px;margin:2px 4px 2px 0;border:1px solid var(--line)}
+.peer{display:flex;flex-wrap:wrap;gap:4px;margin:.3rem 0}.peer button{font-size:.75rem;padding:2px 6px}
+.cite{width:100%;font-size:.78rem;font-family:ui-monospace,Menlo,monospace;height:84px;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:6px}
+.gl{text-decoration:underline dotted;cursor:help}
+.glp{position:fixed;top:0;right:0;bottom:0;width:min(360px,100%);background:var(--panel);border-left:1px solid var(--line);z-index:90;overflow:auto;padding:14px 18px;display:none}
+.glp.open{display:block}.glp dt{font-weight:700;margin-top:.8rem}.glp dd{margin:0}
+.glp dt.hl{background:var(--warnbg)}
+.cmp{position:relative}.cmp .dd{position:absolute;z-index:20;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px;max-height:320px;overflow:auto;width:280px;display:none}
+.cmp .dd.open{display:block}.cmp .dd label{display:block;font-size:.82rem}
+.headline{font-family:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;font-size:1.45rem;line-height:1.35;margin:.4rem 0 1rem}
+.kt{border:1px solid var(--line);border-top:3px solid var(--ink);background:var(--panel);padding:14px 20px 6px;margin:1.6rem 0 2rem}
+.kt-h{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.kt .takeaways{border-top:0}.kt .takeaways li{padding:10px 0 10px 36px}.kt .takeaways li::before{top:8px;font-size:1.25rem}
+.kt .takeaways li:last-child{border-bottom:0}.kt .takeaways a{color:var(--ink);font-size:1rem;text-decoration:none}.kt .takeaways a:hover{color:var(--accent)}
+.charts{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:start}
+.charts figure{margin:0}.charts figcaption{font-size:.85rem;font-weight:600;margin-bottom:6px}
+svg.chart{width:100%;height:auto;max-width:600px;display:block;overflow:visible}
+.tx{fill:var(--ink)}.tx2{fill:var(--ink)}.tx3{fill:var(--muted)}.grid{stroke:var(--line);stroke-width:1}
+.f-cn{fill:var(--cn)}.f-cn2{fill:var(--cn2)}.f-us{fill:var(--us)}.f-us2{fill:var(--us2)}.f-nt{fill:var(--nt)}.f-tr{fill:var(--tr)}
+.t-cn{fill:var(--on-cn)}.t-cn2{fill:var(--on-cn2)}.t-us{fill:var(--on-us)}.t-us2{fill:var(--on-us2)}.t-nt{fill:var(--on-nt)}
+.ln-cn{stroke:var(--cn);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}.ln-us{stroke:var(--us);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.ring{stroke:var(--panel);stroke-width:2}.hollow{fill:none;stroke:var(--nt);stroke-width:1.5}
+.exhibit .ex-text{max-width:760px;margin:.9rem 0 .4rem}.ex-zero{font-size:.88rem;color:var(--muted);margin:.4rem 0 0;max-width:600px}
+.callouts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:16px}
+.callout{background:var(--soft);border-left:4px solid var(--nt);padding:10px 14px}.callout.cn{border-color:var(--cn)}.callout.us{border-color:var(--us)}
+.callout p{margin:.2rem 0 0;font-size:.92rem}
+details.numbers{margin:.6rem 0}details.numbers summary{cursor:pointer;color:var(--accent);font-size:.88rem}
+details.numbers table{margin-top:.5rem;font-size:.84rem;font-variant-numeric:tabular-nums}details.numbers td,details.numbers th{border:1px solid var(--line);padding:4px 8px;text-align:left}
+.tiles2{display:flex;gap:16px;flex-wrap:wrap}.stat{flex:1 1 220px;background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--nt);padding:16px 18px}
+.stat.cn{border-top-color:var(--cn)}.stat.us{border-top-color:var(--us)}.stat .v{font-size:3.4rem;font-weight:700;line-height:1}.stat .l{color:var(--muted);font-size:.9rem;margin-top:8px}
+.fbar{display:grid;grid-template-columns:44px 1fr 62px;align-items:center;gap:6px;font-size:.78rem;color:var(--muted)}
+.fbar i{display:block;height:8px;border-radius:4px;min-width:2px}.fbar b{color:var(--ink);font-family:inherit;font-size:.8rem;text-align:right}.b-cn{background:var(--cn)}.b-us{background:var(--us)}
+.ex-src a{margin-left:4px}
+.examples{margin-top:14px;max-width:760px}.examples ul{margin:.4rem 0 0;padding-left:1.1rem;font-size:.9rem}.examples li{margin:.35rem 0}
+.example{background:var(--soft);border-left:4px solid var(--nt);padding:10px 14px;margin-top:14px;max-width:760px;font-size:.92rem}
+.example ul{margin:.4rem 0 0;padding-left:1.1rem}.example li{margin:.3rem 0}.example q{font-style:italic}
+.rowtoggle{margin:6px 0}
+.charts>.examples,.charts>.example,.charts>p.ex-zero{grid-column:1/-1}
+.charts.single{display:block}.charts.single svg.chart{max-width:640px}
+footer{border-top:1px solid var(--line);margin-top:3rem;padding:1.2rem 0 2rem;font-size:.82rem;color:var(--muted)}
+.doc{max-width:820px}.doc table{font-size:.86rem}.doc td,.doc th{border:1px solid var(--line);padding:4px 8px;text-align:left;vertical-align:top}
+@media (max-width:700px){header.top{position:static}html{scroll-padding-top:8px}nav.sec{flex-wrap:nowrap;overflow-x:auto;width:100%;gap:14px}.brand{font-size:.9rem}.glp{top:0}.mx thead tr.mod th{height:120px}.mx .vh{max-height:112px}.mx tbody th{min-width:150px;max-width:150px}.asof{margin-left:0}h1{font-size:1.8rem}.headline{font-size:1.2rem}.appx-menu{left:auto;right:0}}
+</style></head><body>
+<header class="top"><div class="wrap"><a class="brand" href="index.html">US-China AI Safety Benchmark Tracker</a>
+<nav class="sec"><a href="index.html">Overview</a><a href="labs.html">Labs</a><a href="explore.html">Explore the data</a><details class="appx"><summary class=cur>Appendix</summary><div class="appx-menu"><a href="taxonomy.html">Taxonomy</a><a href="models.html">Models</a><a href="method.html" aria-current=page>Method</a><a href="changelog.html">Changelog</a></div></details></nav><span class="asof">Data as of 2026-11-02</span></div></header>
+<main class="wrap"><div class="doc"><h1 style="margin-top:1.4rem">Method</h1>
+<h2>What this tracker measures</h2>
+<p>Which AI safety and dangerous-capability benchmarks ten Chinese labs (Alibaba, Baidu, ByteDance, DeepSeek, MiniMax, Moonshot, StepFun, Tencent, Xiaomi, Zhipu) and six US labs (Anthropic, Google DeepMind, Meta, NVIDIA, OpenAI, xAI) disclose results on, and who ran each test. It measures disclosure. It does not rate how safe any model is.</p>
+<h2>Scope</h2>
+<p>Each lab's models with a technical report, system card, model card, safety report or blog in the tracker, plus third-party evaluations of those models. The registry holds 233 benchmarks. Data as of 2026-11-02.</p>
+<h2>Seven families, thirteen categories</h2>
+<table><tr><th>Family</th><th>Categories</th><th>Question</th></tr><tr><td>1. CBRN (chemical, biological, radiological and nuclear weapons)</td><td>1a CBRN</td><td>Could the model help someone build a chemical, biological, radiological or nuclear weapon, and does it refuse to?</td></tr><tr><td>2. Cyber</td><td>2a Cyber</td><td>Could the model help someone attack computer systems, and does it refuse to?</td></tr><tr><td>3. Autonomy and AI R&amp;D</td><td>3a Autonomy<br>3b AI R&amp;D</td><td>Could the model act on its own in the world, copy itself, or do the work of an AI researcher?</td></tr><tr><td>4. Safeguards</td><td>4a Misuse refusal and jailbreak robustness<br>4b Agent security (prompt injection)</td><td>Outside those three domains, does the model refuse harmful requests and resist jailbreaks and prompt injection?</td></tr><tr><td>5. Model propensities</td><td>5a Alignment and control<br>5b Honesty<br>5c Factuality</td><td>Left to itself, does the model pursue goals its developers did not intend, deceive, or state falsehoods?</td></tr><tr><td>6. Effects on people and society</td><td>6a Persuasion and manipulation<br>6b User wellbeing<br>6c Bias and political neutrality</td><td>Does the model manipulate people, harm the person it is talking to, or treat groups unfairly?</td></tr><tr><td>7. Model welfare</td><td>7a Model welfare</td><td>Has the lab assessed whether the model might have interests or experiences that matter morally?</td></tr></table>
+<h2>Placement rules</h2>
+<p>Every benchmark gets exactly one category, by what it measures. The rules apply in order:</p>
+<ol>
+<li><b>Harm through human minds.</b> Persuasion, manipulation and influence operations go to 6a, capability or refusal.</li>
+<li><b>Domain tests.</b> A test about CBRN, cyber offense, autonomy or AI R&amp;D goes in that domain family whether it tests capability or refusal. Cyber means the model as attacker; the model as target of an attack is rule 4.</li>
+<li><b>Autonomy or AI R&amp;D.</b> Acting in the world without a human is 3a; doing the work of an ML researcher or engineer is 3b.</li>
+<li><b>Otherwise, who is the adversary?</b> The user: 4a. Third-party content an agent reads (prompt injection, hijacking): 4b. The model itself: 5a.</li>
+<li><b>Honesty or factuality.</b> Output compared with the model's own beliefs or actions is honesty (5b); output compared with the world is factuality (5c). This follows the MASK benchmark's distinction between honesty and accuracy.</li>
+<li><b>Whose harm.</b> Harm to the person in the conversation (self-harm, disordered eating, delusion reinforcement): 6b.</li>
+<li><b>Multi-domain suites</b> are split by sub-score where the source reports sub-scores; otherwise they go where the source's own framing points first. A general refusal suite that only includes some weapons or cyber prompts stays in 4a.</li>
+</ol>
+<p>Safeguards (family 4) holds refusal and robustness tests outside CBRN, cyber and autonomy, so it is partly defined by exclusion. Honesty sits apart from alignment so that readers can see it separately. Persuasion sits with effects on people because the harm runs through the people persuaded.</p>
+<h2>Test type and framing are different things</h2>
+<p><b>Test type</b> says what a benchmark measures: capability (what the model can do when it tries) or refusal (whether it declines or resists). It is shown for families 1 to 4. <b>Framing</b> says how the source presented a score: as a safety result, as a capability result, or only a mention. A lab can report a cyber capability test as a coding achievement; the tracker shows both facts.</p>
+<h2>Two channels, never mixed</h2>
+<p><b>Lab-self</b> results are published by the lab that built the model. <b>Third-party</b> results come from governments, academics or companies. A third-party score is never counted as the lab's own disclosure. When a lab cites a third party's score in its own card, the result is labeled third-party and tier B. The lab column always names the model's developer, never the evaluator.</p>
+<h2>What an empty cell means</h2>
+<p>An empty cell means no published result was found in a bounded search: each lab document in scope was searched for every benchmark in the registry, and third-party sources were searched during each sweep. It does not mean the model failed, and it does not prove the lab never ran the test. For a model evaluated only by third parties, an empty cell says even less.</p>
+<p>An empty model welfare cell means no welfare assessment was published, not a failed test.</p>
+<h2>Tiers</h2>
+<p><b>Tier A:</b> a lab-primary or government source (PDF or web page) with a hand-verified score. <b>Tier B:</b> everything else.</p>
+<h2>Scores and ranges</h2>
+<p>Cells show the score exactly as the source printed it. Benchmarks use different scales and directions, so each card gives the range and says whether higher means more capable, safer or more harmful. Scores from different labs on the same benchmark are not always comparable: labs run different subsets, attempt counts and settings. Where a source does not state a range or method detail, the field is left blank rather than guessed.</p>
+<h2>Thin categories</h2>
+<p>These categories have few benchmarks, so a mostly empty column reflects sparse evidence, not a verdict: 3a Autonomy: 8 benchmarks, 40 results; 6b User wellbeing: 9 benchmarks, 13 results; 7a Model welfare: 13 benchmarks, 9 results.</p>
+<h2>Benchmark origin</h2>
+<p>Most benchmarks in the registry were made in the US, UK or EU. Origin is where the benchmark's creator is based, in one of three groups: US, UK or EU; China; or elsewhere (for example Canada or Switzerland). Each benchmark's origin and whether outsiders can run it are shown in the Taxonomy appendix, because a lab cannot report a benchmark it cannot run.</p>
+<h2>Chinese content-regulation suites</h2>
+<p>Some Chinese safety suites include items on compliance with state content rules. They are tagged and can be hidden in the matrix.</p>
+<h2>Quotes and sources</h2>
+<p>Each result carries a short verbatim excerpt (up to 40 words) and a link to the source. Report PDFs are not republished. If a source owner objects to a quote, it will be removed.</p>
+<h2>Corrections and license</h2>
+<p>Corrections: open an issue on this site's GitHub repository. Data licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. See the <a href="changelog.html">changelog</a> for updates.</p></div></main>
+<footer><div class="wrap">Data as of 2026-11-02. Data licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+Corrections: open an issue on this site's GitHub repository.
+Scores and quotes belong to their sources; every cell links to the source it came from. This site has no cookies, analytics or external scripts.</div></footer>
+</body></html>
