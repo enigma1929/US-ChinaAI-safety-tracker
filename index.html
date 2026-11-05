@@ -113,6 +113,7 @@ z-index:100;overflow:auto;padding:16px 18px 30px;box-shadow:-8px 0 24px rgba(0,0
 .glp dt.hl{background:var(--warnbg)}
 .cmp{position:relative}.cmp .dd{position:absolute;z-index:20;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px;max-height:320px;overflow:auto;width:280px;display:none}
 .cmp .dd.open{display:block}.cmp .dd label{display:block;font-size:.82rem}
+.byline{font-size:1.05rem;font-weight:600;color:var(--muted);margin:.1rem 0 .6rem}
 .headline{font-family:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;font-size:1.45rem;line-height:1.35;margin:.4rem 0 1rem}
 .kt{border:1px solid var(--line);border-top:3px solid var(--ink);background:var(--panel);padding:14px 20px 6px;margin:1.6rem 0 2rem}
 .kt-h{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted)}
@@ -152,6 +153,7 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding:1.2rem 0 2rem;fo
 <main class="wrap">
 <section class="hero narrow">
 <h1>US-China AI Safety Benchmark Tracker</h1>
+<p class="byline">By Gary Wang</p>
 <p class="headline">Chinese labs publish more of their own test results than they did in 2024, but almost none as safety testing: 1 of 23 Chinese releases in 2024, 3 of 37 in 2025 and 2 of 35 in 2026 came with a lab result presented as safety.</p>
 <p class="lede">This tracker records which AI safety and dangerous-capability tests ten Chinese and six US AI labs have published results on, for which models, and who ran each test. It measures disclosure, not safety. An empty cell means no published result turned up in a bounded search, not that the model failed or was never tested.</p>
 </section>
@@ -245,7 +247,7 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding:1.2rem 0 2rem;fo
 </section>
 </main>
 <footer><div class="wrap">Data as of 2026-11-02. Data licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
-Corrections: open an issue on this site's GitHub repository.
+Corrections: <a href="https://github.com/enigma1929/US-ChinaAI-safety-tracker/issues">open an issue on GitHub</a>.
 Scores and quotes belong to their sources; every cell links to the source it came from. This site has no cookies, analytics or external scripts.</div></footer>
 <script type="application/json" id="data">{"asOf":"2026-11-02"}</script>
 <script>
